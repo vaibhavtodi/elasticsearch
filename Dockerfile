@@ -8,14 +8,6 @@ MAINTAINER  "Vaibhav Todi" <vaibhavtodi1989@gmail.com>
 LABEL       Description="Elasticsearch Docker image"                                               \
             Version="1.7"
 
-# Setting the Environment Variables
-ENV         ES_CLUSTER_NAME=graylog                                                                \
-            ES_DATA_PATH="/var/lib/elasticsearch"                                                  \
-            ES_LOG_PATH="/var/log/elasticsearch"                                                   \
-            ES_NETWORK_HOST="0.0.0.0"                                                              \
-            ES_HTTP_PORT=9200                                                                      \
-            ES_UNICAST="[\"0.0.0.0:9300\"]"
-
 # Downloading & Installing the Elasticsearch package using curl
 RUN         wget   -qO -  https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -   \
        &&   echo          "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-1.7.list  \
