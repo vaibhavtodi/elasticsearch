@@ -11,8 +11,9 @@ LABEL       Description="Elasticsearch Docker image"                            
 # Setting the ENV variable
 ENV         JAVA           /usr/lib/jvm/java-8-oracle
 
-# Downloading & Installing the Elasticsearch package using curl
-RUN         wget    -qO -  https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -   \
+# Downloading & Installing the Elasticsearch package
+RUN         apt-get        update                                                                   \
+       &&   apt-get        install -y     wget                                                      \
        &&   echo           "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list \
        &&   apt-get        update                                                                   \
        &&   apt-get        install   -y   elasticsearch
