@@ -1,5 +1,5 @@
 # Specifing the base image
-FROM        vaibhavtodi/java:latest
+FROM        vaibhavtodi/debian-java:latest
 
 # Maintainer
 MAINTAINER  "Vaibhav Todi" <vaibhavtodi1989@gmail.com>
