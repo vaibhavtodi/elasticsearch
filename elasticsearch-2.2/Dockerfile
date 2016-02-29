@@ -5,15 +5,17 @@ FROM        vaibhavtodi/debian-java:latest
 MAINTAINER  "Vaibhav Todi" <vaibhavtodi1989@gmail.com>
 
 # Specifing the Label
-LABEL       Description="Elasticsearch Docker image"                                               \
+LABEL       Description="Elasticsearch Docker image"                                                \
             Version="2.2"
 
 # Setting the ENV variable
 ENV         JAVA           /usr/lib/jvm/java-8-oracle
 
-# Downloading & Installing the Elasticsearch package
-RUN         wget    -qO -  https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -   \
-       &&   echo           "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list \
+# Downloading & Installing the Elasticsearch packagei
+RUN         apt-get        update                                                                   \
+       &&   apt-get        install -y wget                                                          \
+       &&   wget    -qO -  https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -        \
+       &&   echo           "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list \
        &&   apt-get        update                                                                   \
        &&   apt-get        install   -y   elasticsearch
 
