@@ -1,4 +1,4 @@
 #!/bin/sh
 
-exec /usr/share/elasticsearch/bin/elasticsearch --default.path.conf=/etc/elasticsearch
+exec chpst -P -U elasticsearch -u elasticsearch /usr/share/elasticsearch/bin/elasticsearch --default.path.conf=/etc/elasticsearch
 
