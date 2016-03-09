@@ -29,7 +29,7 @@ RUN         sed -i 's/es_cluster/graylog/'                     /etc/elasticsearc
        &&   sed -i 's/es_log_path/\/var\/log\/elasticsearch/'  /etc/elasticsearch/elasticsearch.yml                    \
        &&   sed -i 's/es_network_host/0\.0\.0\.0/'             /etc/elasticsearch/elasticsearch.yml                    \
        &&   sed -i 's/es_http_port/9200/'                      /etc/elasticsearch/elasticsearch.yml                    \
-       &&   sed -i 's/es_unicast/["0\.0\.0\.0:9300"]/'         /etc/elasticsearch/elasticsearch.yml
+       &&   sed -i 's/es_unicast/["172\.17\.0\.1:9300"]/'      /etc/elasticsearch/elasticsearch.yml
 
 RUN         for path in                                                                             \
                 /var/lib/elasticsearch                                                              \
@@ -53,7 +53,7 @@ RUN         echo      "root:root"    |   chpasswd
 EXPOSE      9200       9300
 
 # Mounting the log & data directory
-VOLUME      ["/var/lib/elasticsearch", "/var/log/elasticsearch"]
+VOLUME      ["/var/lib/elasticsearch", "/var/log/elasticsearch", "/etc/elasticsearch"]
 
 # Setting the User
 USER        elasticsearch
